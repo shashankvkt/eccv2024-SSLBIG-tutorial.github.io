@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+
+  <title>Time is precious: Self-Supervised Learning Beyond Images</title>
+  <meta name="description" content="Tutorial in Conjunction with NeurIPS 2023 ---">
+
+  <!--Open Graph Related Stuff-->
+  <meta property="og:title" content="Time is precious: Self-Supervised Learning Beyond Images"/>
+  
+
+  <!-- CSS  -->
+  <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="./css/main.css?1" media="screen,projection">
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/ff6e9b10da.js" crossorigin="anonymous"></script>
+</head>
+
+  <body>
+
+    <!-- <div class="top-strip"></div> -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/"></a>
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <div class="navbar-collapse collapse" id="navbar-main">
+      <ul class="nav navbar-nav">
+		<li><a href="#speakers">Speakers</a></li>
+        <li><a href="#talks">Schedule</a></li>
+        <li><a href="#organizers">About Us</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+
+    <div class="container">
+      <div class="page-content">
+          <p><br /></p>
+<div class="row">
+  <div class="col-xs-12">
+  <center><h2><b>ECCV 2024 Tutorial:</b></h2></center><br>
+    <center><h1>Time is precious: Self-Supervised Learning Beyond Images</h1></center><br>
+        <!-- <center><h2><i><b>Date, Time, Location</b>: TO be u</i><h2>
+        	<h2><i>New Orleans Ernest N. Morial Convention Center, Hall E2</i><h2> -->
+        
+        </center>
+  </div>
+</div>
+
+<center>
+<br>
+<a>
+    <img width="400px" src="./img/eccv_logo.png" />
+</a>
+<br>
+<br>
+<br>
+<!-- <a>
+    <img src="./img/ldm_figure.png" />
+</a> -->
+</center>
+
+<!-- <br>
+<p style="color:red;text-align:center">
+<b> &#x1F4E2; Check <a href="https://drive.google.com/file/d/1p_aZ627Bwvku7nKyYRHtfZe50nAnpqGU/view?usp=sharing">this Google drive link</a> for our tutorial slides.</b>
+</p>
+<br> -->
+<!-- <br>
+<p style="color:red;text-align:center">
+<b> &#x1F4E2; &#x1F3A5; Check <a href="https://drive.google.com/file/d/1DYHDbt1tSl9oqm3O333biRYzSCOtdtmn/view?usp=sharing">this Google drive link</a> for our tutorial slides and this <a href="https://www.youtube.com/watch?v=cS6JQpEY9cs">YouTube link</a> for the video recording.</b>
+</p>
+<br> -->
+
+<br>
+<h2>Overview</h2>
+<br/>
+<p>
+Self-supervised learning (SSL) is a powerful technique that's been able to reach the same levels of performance as supervised pretraining, thanks to its ability to work with billions of images. Existing image-based self-supervised methods focus on learning representations that are invariant to synthetic augmentations, addressing key image aspects like scale, color, and translation invariance. These factors represent only a fraction of the intricate variations in pose, viewpoint, and motion found naturally in videos, which contain more nuanced and informative signals.  
+</p>
+<p>
+In this tutorial, we discuss a shift from traditional augmentation invariance strategies prevalent in image-based SSL to a more dynamic utilization of video data. We discuss multiple techniques that leverage the rich temporal signals in videos through a dual focus on the spatial details within each frame and the changes occurring between them. Our tutorial presents a forward-looking perspective on incorporating temporal information to improve SSL algorithms, representing an paradigm shift in SSL.
+</p>
+
+<br id="speakers" /><br/>
+
+
+<div class="row">
+  <div class="col-xs-12">
+    <h2>Speakers</h2><br>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+
+
+  <div class="row">
+    <div class="col-xs-4" id="shashank">
+      <center>
+      <a href="https://shashankvkt.github.io/">
+        <img class="people-pic" src="./img/people/shashank.jpg" />
+      </a>
+      <div class="people-name">
+        <a href="https://shashankvkt.github.io/">Shashanka Venkataramanan</a>
+        <h6>INRIA</h6>
+      </div>
+    </center>
+    </div>
+    <div class="col-xs-4" id="mrzsalehi">
+      <center>
+      <a href="https://scholar.google.com/citations?user=kpT3gcsAAAAJ&hl=en">
+        <img class="people-pic" src="./img/people/mrzsalehi.jpeg" />
+      </a>
+      <div class="people-name">
+        <a href="https://scholar.google.com/citations?user=kpT3gcsAAAAJ&hl=en">Mohammadreza Salehi</a>
+        <h6>University of Amsterdam</h6>
+      </div>
+    </center>
+    </div>
+    <div class="col-xs-4" id="arash">
+      <center>
+      <a href="https://yukimasano.github.io/">
+        <img class="people-pic" src="./img/people/yuki.jpg" />
+      </a>
+      <div class="people-name">
+         <a href="https://yukimasano.github.io/">Yuki M. Asano</a>
+        <h6>University of Amsterdam</h6>
+      </div>
+    </center>
+    </div>
+    <div class="col-xs-4" id="joao">
+      <center>
+      <a href="https://scholar.google.co.uk/citations?user=IUZ-7_cAAAAJ&hl=en/">
+        <img class="people-pic" src="./img/people/joao.jpeg" />
+      </a>
+      <div class="people-name">
+        <a href="https://scholar.google.co.uk/citations?user=IUZ-7_cAAAAJ&hl=en/">João Carreira</a>
+        <h6>Google DeepMind</h6>
+      </div>
+    </center>
+    </div>
+    <div class="col-xs-4" id="karsten">
+      <center>
+      <a href="https://imisra.github.io/">
+        <img class="people-pic" src="./img/people/ishan.jpeg" />
+      </a>
+      <div class="people-name">
+        <a href="https://imisra.github.io/">Ishan Misra</a>
+        <h6>GenAI, Meta</h6>
+      </div>
+    </center>
+    </div>
+    <div class="col-xs-4" id="karsten">
+      <center>
+      <a href="https://sites.google.com/view/eminorhan/">
+        <img class="people-pic" src="./img/people/emin.jpeg" />
+      </a>
+      <div class="people-name">
+        <a href="https://sites.google.com/view/eminorhan/">Emin Orhan</a>
+        <h6>Rice University</h6>
+      </div>
+    </center>
+    </div>
+  </div>
+
+<!--   <div class="row">
+	<center>
+	    <img src="./img/nvidia_logo.png" style="width:30%" />
+	    <img src="./img/googledeepmind_logo.png" style="width:40%" />
+	</center>
+  </div> -->
+
+<br id="talks" />
+<br>
+<br>
+
+<div class="row">
+  <div class="col-xs-12">
+     <h2>Schedule</h2>
+     <table class="table schedule" style="border:none !important;">
+      <thead class="thead-light">
+        <tr>
+        <th>Title</th>
+        <th>Speaker</th>
+        <th>Time (CST)</th>
+        <!-- <th>Duration</th> -->
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+            <td><b>Part (1): Introduction to SSL from videos</b><br>Introduction and related works</td>
+            <td><a href="https://shashankvkt.github.io/">Shashanka</a> & <a href="https://scholar.google.com/citations?user=kpT3gcsAAAAJ&hl=en">Mohammadreza</a></td>
+            <!-- <td>40 minutes</td> -->
+            <td>tbu</td>
+        </tr>
+        <tr>
+            <td>Coffee Break</b><br></td>
+            <td></td>
+            <td>tbu</td>
+        </tr>
+        <tr>
+            <td><b>Part (2): SSL from videos</b><br>Tuning DINO with videos, 1-video pretraining, tracking image-patches </td>
+            <td><a href="https://yukimasano.github.io/">Yuki M. Asano</a></td>
+            <!-- <td>40 minutes</td> -->
+            <td>tbu</td>
+        </tr>
+
+        <tr>
+            <td><b>Invited talk: Learning from one continous stream</b><br></td>
+            <td><a href="https://scholar.google.co.uk/citations?user=IUZ-7_cAAAAJ&hl=en/">João Carreira</a></td>
+            <!-- <td>40 minutes</td> -->
+            <td>tbu</td>
+        </tr>
+        <tr>
+            <td>Coffee Break</b><br></td>
+            <td></td>
+            <td>tbu</td>
+        </tr>
+         <tr>
+            <td><b>Invited talk: Text-to-Video Generation</b><br></td>
+            <td><a href="https://imisra.github.io/">Ishan Misra</a></td>
+            <!-- <td>40 minutes</td> -->
+            <td>tbu</td>
+        </tr>
+        <tr>
+            <td><b>Invited talk: SSL through the eyes of a child</b><br></td>
+            <td><a href="https://sites.google.com/view/eminorhan/">Emin Orhan</a></td>
+            <!-- <td>40 minutes</td> -->
+            <td>tbu</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+<br id="organizers" />
+<br>
+<br>
+<br>
+
+<div class="row">
+  <div class="col-xs-12">
+    <h2>About Us</h2>
+  </div>
+</div>
+
+<div class="row speaker" id="shashanka">
+  <div class="col-sm-3 speaker-pic">
+    <a href="https://shashankvkt.github.io/">
+      <img class="people-pic" src="./img/people/shashank.jpg" />
+    </a>
+    <div class="people-name">
+      <a href="https://shashankvkt.github.io/">Shashanka Venkataramanan</a> <a href="https://twitter.com/shawshank_v"><img src="./img/Twitter_Social_Icon_Rounded_Square_Color.png" /></a>
+      <h6>INRIA</h6>
+    </div>
+  </div>
+  <div class="col-md-9">
+    <p class="speaker-bio">
+    Shashanka is a final year PhD student at the LinkMedia team in INRIA, France, advised by Yannis Avrithis. He conducts research on the topic on self-supervised learning, specifically on learning image representation from videos and data-augmentation methods.  He has organized several deep learning workshop focusing on a broad range of topics including diffusion models, RAG, backdoor attacks etc. in his university. 
+    </p>
+  </div>
+</div>
+
+<div class="row speaker" id="ruiqi">
+  <div class="col-sm-3 speaker-pic">
+    <a href="https://scholar.google.com/citations?user=kpT3gcsAAAAJ&hl=en">
+      <img class="people-pic" src="./img/people/mrzsalehi.jpeg" />
+    </a>
+    <div class="people-name">
+      <a href="https://scholar.google.com/citations?user=kpT3gcsAAAAJ&hl=en">Mohammadreza Salehi</a> <a href="https://twitter.com/MrzSalehi"><img src="./img/Twitter_Social_Icon_Rounded_Square_Color.png" /></a>
+      <h6>QUVA Lab, University of Amsterdam</h6>
+    </div>
+  </div>
+  <div class="col-md-9">
+    <p class="speaker-bio">
+    	Mohammadreza is a third year PhD student at the QUVA lab, University of Amsterdam advised by Yuki Asano, Cees Snoek, and Efstratios Gavves. His research focuses on representation learning, with a special emphasis on learning image representations from videos. In addition to his primary research, he is also deeply engaged in the field of machine learning safety, working towards ensuring that AI systems are reliable and safe for society. 
+    </p>
+  </div>
+</div>
+
+
+
+<div class="row speaker" id="arash">
+  <div class="col-sm-3 speaker-pic">
+    <a href="https://yukimasano.github.io/">
+      <img class="people-pic" src="./img/people/yuki.jpg" />
+    </a>
+    <div class="people-name">
+      <a href="https://yukimasano.github.io/">Yuki Asano</a> <a href="https://twitter.com/y_m_asano"><img src="./img/Twitter_Social_Icon_Rounded_Square_Color.png" /></a>
+      <h6>QUVA Lab, University of Amsterdam</h6>
+    </div>
+  </div>
+  <div class="col-md-9">
+    <p class="speaker-bio">
+      Yuki M. Asano is an assistant professor at the Video & Image Sense (VIS) Lab at the University of Amsterdam and leads the Qualcomm-UvA (QUVA) lab. 
+      He conducts research on the topic on self-supervised learning, multi-modal learning and augmentations, which has resulted in works such as GDT, SSB, SeLa or single-image pretraining and most recently the self-supervised learning from videos such as TimeTuning and DoRA. He has served as Area Chair for CVPR 22-24, ICLR 2023 and NeurIPS 2022. He has also organized several workshops such as SSLWIN in ECCV 2020, ECCV 2022, BigMAC in ICCV 2023.
+    </p>
+  </div>
+</div>
+
+
+<br />
+</div></div>
+
+      </div>
+    </div>
+                <div class="section text-gray" id="footer">
+                <div class="container">
+
+                    <div class="row">
+                       <div class="col-sm-5">
+                        </div>
+                        <div class="col-sm-7">
+                            <p><small>
+                            Template by <a href="https://nvlabs.github.io/eccv2020-limited-labels-data-tutorial/" class="external"> Shalini De Mello</a>.</small></p>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+  </body>
+</html>
