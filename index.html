@@ -91,11 +91,23 @@
 <h2>Overview</h2>
 <br/>
 <p>
-Self-supervised learning (SSL) is a powerful technique that's been able to reach the same levels of performance as supervised pretraining, thanks to its ability to work with billions of images. Existing image-based self-supervised methods focus on learning representations that are invariant to synthetic augmentations, addressing key image aspects like scale, color, and translation invariance. These factors represent only a fraction of the intricate variations in pose, viewpoint, and motion found naturally in videos, which contain more nuanced and informative signals.  
+SSL has allowed pretraining of neural networks to scale beyond the size of labelled datasets, demonstrating robust performance without the need for costly annotation. This approach has successfully scaled training dataset sizes to billions of images.
+</p>
+However, state-of-the-art (SoTA) models often learn representations limited to single-image inputs, lacking temporal context. Visual representations derived from such static images are limited to learning from disjoint static snapshots of the world. This limitation is particularly pronounced in recent SSL techniques, all of which are trained on meticulously curated and  object-centric datasets, such as ImageNet. Attempts to scale up single-image techniques to larger, less-curated datasets like Instagram-1B have not yielded substantial improvements in performance. A single image, regardless of artificial augmentation, has its constraints: it cannot create new perspectives of an object or anticipate unfolding events in a scene.
 </p>
 <p>
-In this tutorial, we discuss a shift from traditional augmentation invariance strategies prevalent in image-based SSL to a more dynamic utilization of video data. We discuss multiple techniques that leverage the rich temporal signals in videos through a dual focus on the spatial details within each frame and the changes occurring between them. Our tutorial presents a forward-looking perspective on incorporating temporal information to improve SSL algorithms, representing an paradigm shift in SSL.
+The primary goal of this tutorial is to introduce to the computer vision community, the concept of learning robust representations by leveraging the rich information in video frames. While, image-based pretraining has gained recent popularity with SimCLR, the practice of pretraining models from videos dates back much earlier. This tutorial will recapitulate both early and recent works, which have pretrained image encoders using videos for different pretext tasks such as egomotion prediction, active recognition, dense prediction etc. We also discuss practical implementation details relevant for practitioners and highlight connections to other, existing works such as VITO, TimeTuning, DoRA, V-JEPA etc.  We also discuss recent works aimed to mimic human visual systems such learning from one continuous video stream and by learning from longitudinal audio-visual headcam recordings from young children, thereby putting this concept into a broader context. 
 </p>
+
+<h2>Motivation</h2>
+<br/>
+<p>These works from the last 6-12 months demonstrate a paradigm shift, showcasing SSL models pretrained on videos can outperform image-based pretraining. The notable progress validates this trend, making this tutorial on past and present advancements crucial for newcomers in the field. Key questions we aim to tackle in this tutorial include:</p>
+<ul>
+    <li>Can we learn strong image encoders from good quality videos (i.e. with limited data)?</li>
+    <li>Do we need synthetic augmentations? How useful are the natural augmentations in videos?</li>
+    <li>Can we learn from a continuous stream similar to humans?</li>
+</ul>
+
 
 <br id="speakers" /><br/>
 
@@ -222,7 +234,7 @@ In this tutorial, we discuss a shift from traditional augmentation invariance st
         </tr>
 
         <tr>
-            <td><b>Invited talk: Learning from one continous stream</b><br></td>
+            <td><b>Invited talk: Learning from one continous stream</b><br>tbu</td>
             <td><a href="https://scholar.google.co.uk/citations?user=IUZ-7_cAAAAJ&hl=en/">João Carreira</a></td>
             <!-- <td>40 minutes</td> -->
             <td>tbu</td>
@@ -233,13 +245,13 @@ In this tutorial, we discuss a shift from traditional augmentation invariance st
             <td>tbu</td>
         </tr>
          <tr>
-            <td><b>Invited talk: Text-to-Video Generation</b><br></td>
+            <td><b>Invited talk: Text-to-Video Generation</b><br>tbu</td>
             <td><a href="https://imisra.github.io/">Ishan Misra</a></td>
             <!-- <td>40 minutes</td> -->
             <td>tbu</td>
         </tr>
         <tr>
-            <td><b>Invited talk: SSL through the eyes of a child</b><br></td>
+            <td><b>Invited talk: SSL through the eyes of a child</b><br>tbu</td>
             <td><a href="https://sites.google.com/view/eminorhan/">Emin Orhan</a></td>
             <!-- <td>40 minutes</td> -->
             <td>tbu</td>
